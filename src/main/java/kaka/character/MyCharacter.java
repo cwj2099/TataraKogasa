@@ -258,4 +258,13 @@ public class MyCharacter extends CustomPlayer {
         //Makes a new instance of your character class.
         return new MyCharacter();
     }
+
+    @Override
+    public void draw() {
+        //maybe implment later
+
+        super.draw();
+    }
+
+
 }

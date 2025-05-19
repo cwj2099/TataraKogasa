@@ -6,9 +6,11 @@ import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
+import kaka.potions.SoulCrystal;
 import kaka.util.GeneralUtils;
 import kaka.util.KeywordInfo;
 import kaka.util.TextureLoader;
@@ -18,13 +20,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglFileHandle;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.ModInfo;
 import com.evacipated.cardcrawl.modthespire.Patcher;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.red.Strike_Red;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
 
 import org.apache.logging.log4j.LogManager;
@@ -34,12 +42,15 @@ import org.scannotation.AnnotationDB;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+import javax.sound.midi.Receiver;
+
 @SpireInitializer
 public class BasicMod implements
         EditCardsSubscriber,
         EditCharactersSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
+        PostDungeonInitializeSubscriber,
         PostInitializeSubscriber {
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
@@ -75,6 +86,7 @@ public class BasicMod implements
         //If you want to set up a config panel, that will be done here.
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
+
     }
 
     /*----------Localization----------*/
@@ -243,4 +255,11 @@ public class BasicMod implements
             .setDefaultSeen(true) //And marks them as seen in the compendium
             .cards(); //Adds the cards
     }
+
+    @Override
+    public void receivePostDungeonInitialize() {
+        MaterialPotionSlotManager.add(new SoulCrystal());
+        MaterialPotionSlotManager.add(new SoulCrystal());
+    }
+
 }

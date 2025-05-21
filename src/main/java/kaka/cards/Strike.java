@@ -48,11 +48,8 @@ public class Strike extends BaseCard{
         // 否则让玩家选择2张保留，弃掉其他的
         AbstractDungeon.actionManager.addToBottom(
             new SelectCardsInHandAction("Choose 2 cards to keep", 2, selectedCards -> {
-            // 保留 selectedCards，其他全部弃置
-                for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                    if (!selectedCards.contains(c)) {
-                        AbstractDungeon.player.hand.moveToDiscardPile(c);
-                    }
+                for(AbstractCard c : selectedCards){
+                    AbstractDungeon.player.hand.moveToDiscardPile(c);
                 }
             })
         );

@@ -38,8 +38,7 @@ public class SelectCardsInHandAction extends AbstractGameAction {
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             ArrayList<AbstractCard> selected = AbstractDungeon.handCardSelectScreen.selectedCards.group;
 
-            // 回调函数处理所选卡
-            callback.accept(selected);
+            
 
             // 移除选中的卡，回到原位或弃牌等
             for (AbstractCard c : selected) {
@@ -49,6 +48,9 @@ public class SelectCardsInHandAction extends AbstractGameAction {
             AbstractDungeon.player.hand.refreshHandLayout();
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             this.isDone = true;
+
+            // 回调函数处理所选卡
+            callback.accept(selected);
         }
 
         this.tickDuration();

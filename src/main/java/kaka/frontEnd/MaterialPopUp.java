@@ -1,5 +1,5 @@
 // Source code is decompiled from a .class file using FernFlower decompiler.
-package kaka;
+package kaka.frontEnd;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

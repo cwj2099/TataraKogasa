@@ -10,6 +10,7 @@ import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
+import kaka.frontEnd.MaterialPotionSlotManager;
 import kaka.potions.SoulCrystal;
 import kaka.util.GeneralUtils;
 import kaka.util.KeywordInfo;

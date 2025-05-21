@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.ui.panels.TopPanel;
 
-import kaka.MaterialPotionSlotManager;
+import kaka.frontEnd.MaterialPotionSlotManager;
 
 @SpirePatch(clz = TopPanel.class, method = "update")
 public class UpdatePatch {

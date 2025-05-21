@@ -1,11 +1,16 @@
 package kaka.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import kaka.actions.SelectCardsInHandAction;
 import kaka.character.MyCharacter;
 import kaka.util.CardStats;
 
@@ -33,7 +38,24 @@ public class Strike extends BaseCard{
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        if (p.hand.size() <= 2) {
+            AbstractDungeon.actionManager.addToBottom(
+                new DiscardAction(p, p, p.hand.size(), false)
+            );
+            return;
+        }
+
+        // 否则让玩家选择2张保留，弃掉其他的
+        AbstractDungeon.actionManager.addToBottom(
+            new SelectCardsInHandAction("Choose 2 cards to keep", 2, selectedCards -> {
+            // 保留 selectedCards，其他全部弃置
+                for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                    if (!selectedCards.contains(c)) {
+                        AbstractDungeon.player.hand.moveToDiscardPile(c);
+                    }
+                }
+            })
+        );
     }
 
 }

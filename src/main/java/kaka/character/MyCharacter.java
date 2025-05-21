@@ -4,6 +4,8 @@ import basemod.BaseMod;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
+import kaka.cards.Strike;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -143,7 +145,7 @@ public class MyCharacter extends CustomPlayer {
         retVal.add(Strike_Red.ID);
         retVal.add(Defend_Blue.ID);
         retVal.add(Defend_Blue.ID);
-        retVal.add(Neutralize.ID);
+        retVal.add(Strike.ID);
 
         return retVal;
     }

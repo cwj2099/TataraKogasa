@@ -8,6 +8,7 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
+import basemod.interfaces.PostUpdateSubscriber;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
 import kaka.frontEnd.CardMaterialSelectScreen;
@@ -53,6 +54,7 @@ public class BasicMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         PostDungeonInitializeSubscriber,
+        PostUpdateSubscriber,
         PostInitializeSubscriber {
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
@@ -265,6 +267,13 @@ public class BasicMod implements
     public void receivePostDungeonInitialize() {
         MaterialPotionSlotManager.add(new SoulCrystal());
         MaterialPotionSlotManager.add(new SoulCrystal());
+    }
+
+    @Override
+    public void receivePostUpdate() {
+        if (AbstractDungeon.screen == CardMaterialSelectScreen.CARD_MATERIAL_SELECT) {
+            BasicMod.cmSelection.update();
+        }
     }
 
 }

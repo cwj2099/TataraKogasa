@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+import kaka.BasicMod;
+
 public class SelectCardsInHandAction extends AbstractGameAction {
     private Consumer<ArrayList<AbstractCard>> callback;
     private String message;
@@ -30,13 +32,13 @@ public class SelectCardsInHandAction extends AbstractGameAction {
                 return;
             }
 
-            AbstractDungeon.handCardSelectScreen.open(message, amount, false, false);
+            BasicMod.cmSelection.open(message, amount, false, false);
             this.tickDuration();
             return;
         }
 
-        if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
-            ArrayList<AbstractCard> selected = AbstractDungeon.handCardSelectScreen.selectedCards.group;
+        if (!BasicMod.cmSelection.wereCardsRetrieved) {
+            ArrayList<AbstractCard> selected = BasicMod.cmSelection.selectedCards.group;
 
             
 
@@ -46,7 +48,7 @@ public class SelectCardsInHandAction extends AbstractGameAction {
             }
 
             AbstractDungeon.player.hand.refreshHandLayout();
-            AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
+            BasicMod.cmSelection.wereCardsRetrieved = true;
             this.isDone = true;
 
             // 回调函数处理所选卡

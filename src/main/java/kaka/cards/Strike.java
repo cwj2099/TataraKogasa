@@ -45,7 +45,6 @@ public class Strike extends BaseCard{
             return;
         }
 
-        // 否则让玩家选择2张保留，弃掉其他的
         AbstractDungeon.actionManager.addToBottom(
             new SelectCardsInHandAction("Choose 2 cards to keep", 2, selectedCards -> {
                 for(AbstractCard c : selectedCards){

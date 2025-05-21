@@ -10,6 +10,7 @@ import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
+import kaka.frontEnd.CardMaterialSelectScreen;
 import kaka.frontEnd.MaterialPotionSlotManager;
 import kaka.potions.SoulCrystal;
 import kaka.util.GeneralUtils;
@@ -58,6 +59,7 @@ public class BasicMod implements
     static { loadModInfo(); }
     private static final String resourcesFolder = checkResourcesPath();
     public static final Logger logger = LogManager.getLogger(modID); //Used to output to the console.
+    public static CardMaterialSelectScreen cmSelection;
 
     //This is used to prefix the IDs of various objects like cards and relics,
     //to avoid conflicts between different mods using the same name for things.
@@ -88,6 +90,8 @@ public class BasicMod implements
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
 
+        cmSelection = new CardMaterialSelectScreen();
+        cmSelection.lazyInitText();
     }
 
     /*----------Localization----------*/

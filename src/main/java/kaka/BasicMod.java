@@ -11,7 +11,6 @@ import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.PostUpdateSubscriber;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
-import kaka.frontEnd.CardMaterialSelectScreen;
 import kaka.frontEnd.MaterialPotionSlotManager;
 import kaka.potions.SoulCrystal;
 import kaka.util.GeneralUtils;
@@ -61,7 +60,6 @@ public class BasicMod implements
     static { loadModInfo(); }
     private static final String resourcesFolder = checkResourcesPath();
     public static final Logger logger = LogManager.getLogger(modID); //Used to output to the console.
-    public static CardMaterialSelectScreen cmSelection;
 
     //This is used to prefix the IDs of various objects like cards and relics,
     //to avoid conflicts between different mods using the same name for things.
@@ -91,9 +89,6 @@ public class BasicMod implements
         //If you want to set up a config panel, that will be done here.
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
-
-        cmSelection = new CardMaterialSelectScreen();
-        cmSelection.lazyInitText();
     }
 
     /*----------Localization----------*/
@@ -265,15 +260,10 @@ public class BasicMod implements
 
     @Override
     public void receivePostDungeonInitialize() {
-        MaterialPotionSlotManager.add(new SoulCrystal());
-        MaterialPotionSlotManager.add(new SoulCrystal());
     }
 
     @Override
     public void receivePostUpdate() {
-        if (AbstractDungeon.screen == CardMaterialSelectScreen.CARD_MATERIAL_SELECT) {
-            BasicMod.cmSelection.update();
-        }
     }
 
 }

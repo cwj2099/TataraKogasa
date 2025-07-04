@@ -11,8 +11,6 @@ import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.PostUpdateSubscriber;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
-import kaka.frontEnd.MaterialPotionSlotManager;
-import kaka.potions.SoulCrystal;
 import kaka.util.GeneralUtils;
 import kaka.util.KeywordInfo;
 import kaka.util.TextureLoader;

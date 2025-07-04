@@ -6,6 +6,7 @@ import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 import kaka.cards.gems.PurpleGem;
 import kaka.cards.gems.RedGem;
+import kaka.cards.start.Melt;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -145,9 +146,9 @@ public class MyCharacter extends CustomPlayer {
         retVal.add(Strike_Red.ID);
         retVal.add(Strike_Red.ID);
         retVal.add(Defend_Blue.ID);
-        retVal.add(RedGem.ID);
-        retVal.add(PurpleGem.ID);
-        retVal.add(PurpleGem.ID);
+        retVal.add(Melt.ID);
+        retVal.add(Melt.ID);
+        retVal.add(Melt.ID);
         return retVal;
     }
 

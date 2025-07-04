@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import kaka.CusomTags;
+import kaka.CustomTags;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
 import kaka.util.CardStats;
@@ -20,7 +20,7 @@ public class RedGem extends BaseCard{
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.CURSE,
-            CardRarity.BASIC,
+            CardRarity.COMMON,
             CardTarget.NONE,
             0
     );
@@ -29,7 +29,7 @@ public class RedGem extends BaseCard{
         super(ID, info);
         
         tags.add(CardTags.STRIKE);
-        tags.add(CusomTags.Red);
+        tags.add(CustomTags.Red);
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import kaka.CusomTags;
+import kaka.CustomTags;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
 import kaka.util.CardStats;
@@ -18,7 +18,7 @@ public class PurpleGem extends BaseCard{
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.CURSE,
-            CardRarity.BASIC,
+            CardRarity.COMMON,
             CardTarget.NONE,
             0
     );
@@ -26,7 +26,7 @@ public class PurpleGem extends BaseCard{
     public PurpleGem() {
         super(ID, info);
         
-        tags.add(CusomTags.Purple);
+        tags.add(CustomTags.Purple);
     }
 
     @Override

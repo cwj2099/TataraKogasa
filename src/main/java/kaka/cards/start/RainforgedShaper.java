@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.helpers.CardModifierManager;
 import kaka.CustomTags;
+import kaka.actions.SelectMaterialAction;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
 import kaka.modifiers.MoltenModifier;
@@ -35,7 +36,7 @@ public class RainforgedShaper extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         currentPlayer = p;
-        AbstractDungeon.actionManager.addToBottom(new SelectCardsInHandAction(
+        AbstractDungeon.actionManager.addToBottom(new SelectMaterialAction(
             3,
             "Melt into a card",
             false,

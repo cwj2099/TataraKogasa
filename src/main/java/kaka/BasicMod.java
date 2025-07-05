@@ -6,6 +6,8 @@ import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.OnStartBattleSubscriber;
+import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.PostUpdateSubscriber;
@@ -34,6 +36,7 @@ import com.megacrit.cardcrawl.cards.red.Strike_Red;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -52,7 +55,9 @@ public class BasicMod implements
         EditKeywordsSubscriber,
         PostDungeonInitializeSubscriber,
         PostUpdateSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        OnStartBattleSubscriber,
+        PostBattleSubscriber {
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
     static { loadModInfo(); }
@@ -87,6 +92,7 @@ public class BasicMod implements
         //If you want to set up a config panel, that will be done here.
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
+        MaterialZoneManager.initialize();
     }
 
     /*----------Localization----------*/
@@ -257,11 +263,21 @@ public class BasicMod implements
     }
 
     @Override
-    public void receivePostDungeonInitialize() {
+    public void receiveOnBattleStart(AbstractRoom room) {
+        MaterialZoneManager.initialize(); // 每场战斗重新清空
+    }
+
+    @Override
+    public void receivePostBattle(AbstractRoom room) {
+        MaterialZoneManager.clear(); // 战斗后清除
     }
 
     @Override
     public void receivePostUpdate() {
+    }
+
+    @Override
+    public void receivePostDungeonInitialize() {
     }
 
 }

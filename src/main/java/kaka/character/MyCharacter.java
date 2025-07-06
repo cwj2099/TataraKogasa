@@ -6,7 +6,10 @@ import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 import kaka.cards.gems.PurpleGem;
 import kaka.cards.gems.RedGem;
+import kaka.cards.start.Defend;
 import kaka.cards.start.Melt;
+import kaka.cards.start.RainforgedShaper;
+import kaka.cards.start.Strike;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -143,12 +146,18 @@ public class MyCharacter extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         //List of IDs of cards for your starting deck.
         //If you want multiple of the same card, you have to add it multiple times.
-        retVal.add(Strike_Red.ID);
-        retVal.add(Strike_Red.ID);
-        retVal.add(Defend_Blue.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Strike.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
+                
         retVal.add(Melt.ID);
-        retVal.add(Melt.ID);
-        retVal.add(Melt.ID);
+        retVal.add(RainforgedShaper.ID);
+        
         return retVal;
     }
 

@@ -32,6 +32,28 @@
     ]
   },
 
+  "${modID}:ForgeAttack": {
+    "NAME": "攻性熔铸",
+    "DESCRIPTION": "熔铸的结果将限定为攻击牌",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+  "${modID}:ForgeBlock": {
+    "NAME": "防守熔铸",
+    "DESCRIPTION": "熔铸的结果将限定为防御牌",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
   "${modID}:Melt": {
     "NAME": "灼炼",
     "DESCRIPTION": "选择两份素材或手牌，给予其“熔渣”词条。若其已有该词条，则改为将该词条去除",

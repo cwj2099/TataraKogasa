@@ -8,6 +8,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
+import basemod.helpers.CardModifierManager;
+import kaka.modifiers.MoltenModifier;
+
 import java.util.ArrayList;
 
 public class MaterialZoneManager {
@@ -48,7 +51,8 @@ public class MaterialZoneManager {
         // detect hover
         AbstractCard hovered = null;
         for (AbstractCard card : materialList) {
-            if (card.hb.hovered) {
+            if (card.hb.hovered
+                &&!CardModifierManager.hasModifier(card, MoltenModifier.ID)) {
                 hovered = card;
                 break;
             }

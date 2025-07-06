@@ -1,6 +1,10 @@
 package kaka.cards.start;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+
+import java.util.ArrayList;
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +16,8 @@ import basemod.helpers.CardModifierManager;
 import kaka.CustomTags;
 import kaka.actions.SelectMaterialAction;
 import kaka.cards.BaseCard;
+import kaka.cards.options.ForgeAttack;
+import kaka.cards.options.ForgeBlock;
 import kaka.character.MyCharacter;
 import kaka.modifiers.MoltenModifier;
 import kaka.util.CardStats;
@@ -20,13 +26,14 @@ public class RainforgedShaper extends BaseCard {
 
     public static final String ID = makeID(RainforgedShaper.class.getSimpleName());
     AbstractPlayer currentPlayer;
+    CardTags callbackTag;
 
     private static final CardStats info = new CardStats(
             MyCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.BASIC,
             CardTarget.NONE,
-            0
+            1
     );
 
     public RainforgedShaper() {
@@ -36,14 +43,31 @@ public class RainforgedShaper extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         currentPlayer = p;
-        AbstractDungeon.actionManager.addToBottom(new SelectMaterialAction(
-            3,
+        ArrayList<AbstractCard> choices = new ArrayList<>();
+
+        ForgeAttack option1 = new ForgeAttack();
+        option1.assignCallback(this::forgeEvent);
+        ForgeBlock option2 = new ForgeBlock();
+        option2.assignCallback(this::forgeEvent);
+
+        choices.add(option1);
+        choices.add(option2);
+
+        AbstractDungeon.actionManager.addToBottom(new ChooseOneAction(choices));
+    }
+
+    private void forgeEvent(CardTags callbackTag){
+        this.callbackTag = callbackTag;
+
+        AbstractGameAction forgeAction = new SelectMaterialAction(
+            2,
             "Melt into a card",
             false,
             false,
             this::isValidMeltTarget,
             this::handleMoltenToggle
-        ));
+        );
+        AbstractDungeon.actionManager.addToBottom(forgeAction);
     }
 
     private boolean isValidMeltTarget(AbstractCard card) {
@@ -60,21 +84,39 @@ public class RainforgedShaper extends BaseCard {
         if(firstCard.tags.contains(CustomTags.Blue)) cardColor = CardColor.BLUE;
         if(firstCard.tags.contains(CustomTags.Purple)) cardColor = CardColor.PURPLE;
 
+
+        CardGroup pool = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+
         //如果明确有花色
         if(cardColor != CardColor.COLORLESS){
-            CardGroup pool = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             for(AbstractCard c: CardLibrary.getAllCards()){
                 if(c.color == cardColor
                 && c.rarity == firstCard.rarity) pool.addToBottom(c);
             }
-            currentPlayer.hand.addToHand(pool.getRandomCard(true));
         }
-
         //如果没有明确花色
         else{
-            currentPlayer.hand.addToHand(CardLibrary.getAnyColorCard(firstCard.rarity));
+            for(AbstractCard c: CardLibrary.getAllCards()){
+                if((c.color == CardColor.RED || c.color == CardColor.GREEN || c.color == CardColor.BLUE || c.color == CardColor.PURPLE)
+                && c.rarity == firstCard.rarity) pool.addToBottom(c);
+            }
         }
 
+        CardGroup finalPool = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        //根据攻击防御进行筛选
+        if(callbackTag == CardTags.STARTER_STRIKE){
+            for (AbstractCard c : pool.group) {
+                if(c.type == CardType.ATTACK) finalPool.addToBottom(c);
+            }
+        }
+        else if(callbackTag == CardTags.STARTER_DEFEND){
+            for (AbstractCard c : pool.group) {
+                if(c.type == CardType.SKILL
+                && c.baseBlock > 0) finalPool.addToBottom(c);
+            }
+        }
+
+        currentPlayer.hand.addToHand(finalPool.getRandomCard(true));
         
         //让耗材被上标记
         for (AbstractCard card : selectedCards) {

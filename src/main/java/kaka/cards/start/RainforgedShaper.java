@@ -3,6 +3,8 @@ package kaka.cards.start;
 
 import java.util.ArrayList;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsCenteredAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,6 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.helpers.CardModifierManager;
 import kaka.CustomTags;
+import kaka.actions.ChooseCardFromListAction;
 import kaka.actions.SelectMaterialAction;
 import kaka.cards.BaseCard;
 import kaka.cards.options.ForgeAttack;
@@ -116,12 +119,20 @@ public class RainforgedShaper extends BaseCard {
             }
         }
 
-        currentPlayer.hand.addToHand(finalPool.getRandomCard(true));
-        
+
         //让耗材被上标记
         for (AbstractCard card : selectedCards) {
             CardModifierManager.addModifier(card, new MoltenModifier()); 
         }
+
+        ArrayList<AbstractCard> cards = new ArrayList<AbstractCard>();
+        cards.add(finalPool.getRandomCard(true));
+        cards.add(finalPool.getRandomCard(true));
+        cards.add(finalPool.getRandomCard(true));
+
+        AbstractDungeon.actionManager.addToBottom(new ChooseCardFromListAction(cards, card ->{
+            card.costForTurn --;
+        }));
     }
 
     @Override

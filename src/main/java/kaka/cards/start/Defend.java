@@ -16,7 +16,7 @@ public class Defend extends BaseCard {
             MyCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.BASIC,
-            CardTarget.ENEMY,
+            CardTarget.NONE,
             1
     );
 

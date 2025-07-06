@@ -11,6 +11,8 @@ import kaka.MaterialZoneManager;
 public class Render {
     @SpirePostfixPatch
     public static void patch(HandCardSelectScreen __instance, SpriteBatch sb) {
+
+        if(!MaterialZoneManager.showInScreen) return;
         MaterialZoneManager.render(sb);
     }
 }

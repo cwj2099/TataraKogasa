@@ -17,6 +17,7 @@ public class MaterialZoneManager {
     private static final float MATERIAL_Y_GAP = 160.0f * Settings.scale;
     private static final int MATERIAL_LIMIT = 5;
 
+    public static boolean showInScreen = false;
     private static AbstractCard draggingCard = null;
     private static boolean isDragging = false;
 

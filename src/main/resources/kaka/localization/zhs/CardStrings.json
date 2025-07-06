@@ -1,0 +1,122 @@
+{
+  "${modID}:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Description. NL Second line.",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+  "${modID}:Strike": {
+    "NAME": "打击",
+    "DESCRIPTION": "这是打击",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+  "${modID}:Defend": {
+    "NAME": "防御",
+    "DESCRIPTION": "这是防御",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+  "${modID}:Melt": {
+    "NAME": "灼炼",
+    "DESCRIPTION": "选择两份素材或手牌，给予其“熔渣”词条。若其已有该词条，则改为将该词条去除",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+  "${modID}:RainforgedShaper": {
+    "NAME": "雨铸妖锻",
+    "DESCRIPTION": "选择两份手牌或素材，给予其“熔渣”词条，选择并进行一次防御/攻击牌熔铸",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+    "${modID}:MaterialPick": {
+    "NAME": "MaterialPick",
+    "DESCRIPTION": "Description. NL Second line.",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+  
+  "${modID}:RedGem": {
+    "NAME": "红宝石",
+    "DESCRIPTION": "随机造成4/5/6点伤害-熔铸时限定战士卡池",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+    "${modID}:GreenGem": {
+    "NAME": "绿宝石",
+    "DESCRIPTION": "随机赋予1/2/3 层中毒-熔铸时限定猎人卡池",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+    "${modID}:BlueGem": {
+    "NAME": "蓝宝石",
+    "DESCRIPTION": "获得2/3/4点格挡-熔铸时限定鸡煲卡池",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+  "${modID}:PurpleGem": {
+    "NAME": "紫宝石",
+    "DESCRIPTION": "预见1/2/3张牌-熔铸时限定观批卡池",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+
+  "${modID}:RainbowGem": {
+    "NAME": "虹宝石",
+    "DESCRIPTION": "获得2点恐惧-熔铸时限定小伞卡池",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  }
+}

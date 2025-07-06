@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.helpers.CardModifierManager;
+import kaka.actions.SelectMaterialAction;
 import kaka.cards.BaseCard;
 import kaka.character.MyCharacter;
 import kaka.modifiers.MoltenModifier;
@@ -33,7 +34,7 @@ public class Melt extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new SelectCardsInHandAction(
+        AbstractDungeon.actionManager.addToBottom(new SelectMaterialAction(
             magicNumber,
             "Melt",
             true,

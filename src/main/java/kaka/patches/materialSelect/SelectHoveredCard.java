@@ -14,6 +14,8 @@ public class SelectHoveredCard {
     @SpirePrefixPatch
     public static void patch(HandCardSelectScreen __instance) {
 
+        if(!MaterialZoneManager.showInScreen) return;
+
         AbstractCard card = __instance.hoveredCard;
         //处理材料的同时打上标记
         if(MaterialZoneManager.materials.group.contains(card))

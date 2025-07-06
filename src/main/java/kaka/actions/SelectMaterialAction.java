@@ -82,6 +82,7 @@ public class SelectMaterialAction extends AbstractGameAction {
                 return;
             }
 
+            MaterialZoneManager.showInScreen = true;
             AbstractDungeon.handCardSelectScreen.open(text, amount, anyNumber, canPickZero);
             tickDuration();
         } else if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
@@ -104,6 +105,7 @@ public class SelectMaterialAction extends AbstractGameAction {
             player.hand.group.addAll(tempHand);
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
+            MaterialZoneManager.showInScreen = false;
             finish();
         } else {
             tickDuration();

@@ -12,6 +12,7 @@ public class HoverCheck {
     @SpirePostfixPatch
     public static void patch(HandCardSelectScreen __instance) {
 
+        if(!MaterialZoneManager.showInScreen) return;
         if(__instance.hoveredCard != null) return;
 
         AbstractCard hovered = null;

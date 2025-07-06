@@ -11,6 +11,9 @@ import kaka.MaterialZoneManager;
 public class Update {
     @SpirePrefixPatch
     public static void patch(HandCardSelectScreen __instance) {
+
+        if(!MaterialZoneManager.showInScreen) return;
+
         MaterialZoneManager.materials.update();
         MaterialZoneManager.materials.updateHoverLogic();
     }

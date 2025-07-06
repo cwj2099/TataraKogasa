@@ -16,6 +16,8 @@ public class UpdateSelectedCards {
     @SpirePostfixPatch
     public static void patch(HandCardSelectScreen __instance) {
 
+        if(!MaterialZoneManager.showInScreen) return;
+
         // 使用 iterator 安全遍历并移除符合条件的卡
         Iterator<AbstractCard> iterator = AbstractDungeon.player.hand.group.iterator();
         while (iterator.hasNext()) {
